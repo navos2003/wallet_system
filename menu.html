@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet Payment System</title>
+</head>
+<body>
+    <h1>Welcome to the Wallet Payment System</h1>
+    <ul>
+        <li><a href="/account_info/1">View Account Info</a></li>
+        
+        <li><a href="/search_transactions">Search Transactions</a></li>
+    </ul>
+</body>
+</html>
+<form id="sendMoneyForm">
+    <input type="number" id="sender_id" placeholder="Sender ID" required>
+    <input type="number" id="recipient_id" placeholder="Recipient ID" required>
+    <input type="number" step="0.01" id="amount" placeholder="Amount" required>
+    <button type="button" onclick="sendMoney()">Send Money</button>
+</form>
+
+<form id="requestMoneyForm">
+    <h3>Request Money</h3>
+    <input type="number" id="requester_id" placeholder="Requester ID" required>
+    <input type="text" id="request_to" placeholder="Phone or Email" required>
+    <input type="number" step="0.01" id="request_amount" placeholder="Amount" required>
+    <button type="button" onclick="requestMoney()">Request Money</button>
+</form>
+
+
+<div id="searchResults"></div>
+
+<a href="/account_functions">
+    <button type="button">Account Functions</button>
+</a>
+
+<a href="/statement_functions">
+    <button type="button">Statement Functions</button>
+</a>
+
+
+<form action="/sign_out" method="get">
+    <button type="submit">Sign Out</button>
+</form>
+
+
+
+<script>
+    async function sendMoney() {
+        const senderId = document.getElementById('sender_id').value;
+        const recipientId = document.getElementById('recipient_id').value;
+        const amount = document.getElementById('amount').value;
+
+        const response = await fetch('/send_money', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                sender_id: senderId,
+                recipient_id: recipientId,
+                amount: amount
+            })
+        });
+
+        const result = await response.json();
+        alert(result.status);
+    }
+
+    async function requestMoney() {
+        const requesterId = document.getElementById('requester_id').value;
+        const requestTo = document.getElementById('request_to').value;
+        const amount = document.getElementById('request_amount').value;
+
+        const response = await fetch('/request_money', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                requester_id: requesterId,
+                request_to: requestTo,
+                amount: amount
+            })
+        });
+
+        const result = await response.json();
+        if (result.status === 'success') {
+            alert('Request sent successfully!');
+        } else {
+            alert('Failed to send request.');
+        }
+    }
+
+
+
+
+</script>

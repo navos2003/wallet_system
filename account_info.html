@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Information</h1>
+        <h2>User Details</h2>
+        <table>
+            <tr>
+                <th>User ID</th>
+                <td>{{ user.UserID }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ user.Name }}</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td>{{ user.PhoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Email Address</th>
+                <td>{{ user.EmailAddress }}</td>
+            </tr>
+            <tr>
+                <th>Verification Status</th>
+                <td>{{ user.VerificationStatus }}</td>
+            </tr>
+            <tr>
+                <th>Date Joined</th>
+                <td>{{ user.DateJoined }}</td>
+            </tr>
+        </table>
+
+        <h2>Bank Accounts</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bank ID</th>
+                    <th>Account Number</th>
+                    <th>Verification Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in bank_accounts %}
+                <tr>
+                    <td>{{ account.BankID }}</td>
+                    <td>{{ account.AccountNumber }}</td>
+                    <td>{{ account.VerificationStatus }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

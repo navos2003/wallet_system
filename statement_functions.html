@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statement Functions</title>
+</head>
+<body>
+    <h1>Statement Functions</h1>
+
+    <h2>Total Amount Sent/Received (All Time)</h2>
+    <p>Total Sent: {{ range_summary.TotalSent }}</p>
+    <p>Total Received: {{ range_summary.TotalReceived }}</p>
+
+    <h2>Monthly Summary</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Total Sent</th>
+                <th>Average Sent</th>
+                <th>Total Received</th>
+                <th>Average Received</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in monthly_summary %}
+            <tr>
+                <td>{{ row.Month }}</td>
+                <td>{{ row.Year }}</td>
+                <td>{{ row.TotalSent }}</td>
+                <td>{{ row.AvgSent }}</td>
+                <td>{{ row.TotalReceived }}</td>
+                <td>{{ row.AvgReceived }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Max Transactions Per Month</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Year</th>
+                <th>Max Transaction Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in max_transactions %}
+            <tr>
+                <td>{{ row.Month }}</td>
+                <td>{{ row.Year }}</td>
+                <td>{{ row.MaxTransactionAmount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Best Users</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Total Sent</th>
+                <th>Total Received</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in best_users %}
+            <tr>
+                <td>{{ user.UserID }}</td>
+                <td>{{ user.TotalSent }}</td>
+                <td>{{ user.TotalReceived }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

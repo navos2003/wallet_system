@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Functions</title>
+</head>
+<body>
+    <h1>Account Functions</h1>
+    <form action="/modify_details" method="post">
+        <h3>Modify Personal Details</h3>
+        <input type="text" name="name" placeholder="New Name">
+        <input type="text" name="phone" placeholder="New Phone">
+        <button type="submit">Update</button>
+    </form>
+    
+    <form action="/add_email" method="post">
+        <h3>Add Email</h3>
+        <input type="email" name="email" placeholder="New Email">
+        <button type="submit">Add Email</button>
+    </form>
+
+    <form action="/remove_email" method="post">
+        <h3>Remove Email</h3>
+        <input type="number" name="email_id" placeholder="Email ID to Remove">
+        <button type="submit">Remove Email</button>
+    </form>
+
+    <form action="/add_phone" method="post">
+        <h3>Add Phone</h3>
+        <input type="text" name="phone" placeholder="New Phone Number">
+        <button type="submit">Add Phone</button>
+    </form>
+
+    <form action="/remove_phone" method="post">
+        <h3>Remove Phone</h3>
+        <button type="submit">Remove Phone</button>
+    </form>
+
+    <form action="/add_bank_account" method="post">
+        <h3>Add Bank Account</h3>
+        <input type="text" name="account_number" placeholder="Account Number">
+        <button type="submit">Add Bank Account</button>
+    </form>
+
+    <form action="/remove_bank_account" method="post">
+        <h3>Remove Bank Account</h3>
+        <input type="number" name="bank_id" placeholder="Bank ID to Remove">
+        <button type="submit">Remove Bank Account</button>
+    </form>
+
+    <a href="/main_menu"><button>Back to Menu</button></a>
+</body>
+</html>
